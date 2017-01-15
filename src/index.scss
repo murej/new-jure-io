@@ -1,0 +1,25 @@
+@import "~reset-css/reset";
+@import "styles/defaults";
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: $color-black;
+  line-height: $line-height;
+  @extend %font-primary-regular;
+
+  @include mq($until: small) {
+    font-size: $base-font-size-small;
+  }
+  @include mq($from: small, $until: large) {
+    font-size: $base-font-size;
+  }
+  @include mq($from: large) {
+    font-size: $base-font-size-large;
+  }
+}

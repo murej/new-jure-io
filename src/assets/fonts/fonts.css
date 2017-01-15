@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'MaisonNeue';
+  font-weight: 300;
+  font-style: normal;
+  src: url('MaisonNeueWEB-Book.woff2') format('woff2'),
+       url('MaisonNeueWEB-Book.woff') format('woff');
+}

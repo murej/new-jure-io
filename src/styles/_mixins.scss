@@ -1,0 +1,96 @@
+
+
+@mixin font-scale($scale, $line-height: $line-height) {
+
+  @include mq($until: small) {
+    @include _get-font-scale($base-font-size-small, $scale, $line-height)
+  }
+  @include mq($from: small, $until: large) {
+    @include _get-font-scale($base-font-size, $scale, $line-height)
+  }
+  @include mq($from: large) {
+    @include _get-font-scale($base-font-size-large, $scale, $line-height)
+  }
+}
+
+@mixin lines($property, $units) {
+  @include mq($until: small) {
+    #{$property}: $units*$line-height*$base-font-size-small;
+  }
+  @include mq($from: small, $until: large) {
+    #{$property}: $units*$line-height*$base-font-size;
+  }
+  @include mq($from: large) {
+    #{$property}: $units*$line-height*$base-font-size-large;
+  }
+}
+@mixin gutter-units($property, $units) {
+  @include mq($until: small) {
+    #{$property}: $units*$gutter-small;
+  }
+  @include mq($from: small, $until: large) {
+    #{$property}: $units*$gutter;
+  }
+  @include mq($from: large) {
+    #{$property}: $units*$gutter-large;
+  }
+}
+
+@mixin gutter($side: "both") {
+
+  @if $side == "both" {
+    @include mq($until: small) {
+      padding-left: $gutter-small/2;
+      padding-right: $gutter-small/2;
+    }
+    @include mq($from: small, $until: large) {
+      padding-left: $gutter/2;
+      padding-right: $gutter/2;
+    }
+    @include mq($from: large) {
+      padding-left: $gutter-large/2;
+      padding-right: $gutter-large/2;
+    }
+  }
+  @else if $side == "left" {
+    @include mq($until: small) {
+      padding-left: $gutter-small/2;
+    }
+    @include mq($from: small, $until: large) {
+      padding-left: $gutter/2;
+    }
+    @include mq($from: large) {
+      padding-left: $gutter-large/2;
+    }
+  }
+  @else if $side == "right" {
+    @include mq($until: small) {
+      padding-right: $gutter-small/2;
+    }
+    @include mq($from: small, $until: large) {
+      padding-right: $gutter/2;
+    }
+    @include mq($from: large) {
+      padding-right: $gutter-large/2;
+    }
+  }
+}
+
+// INTERNAL MIXINS & FUNCTIONS
+@mixin _get-font-scale($font-size, $scale, $line-height) {
+  @if $scale == 0 {
+    font-size: $font-size;
+    line-height: $font-size * $line-height;
+  }
+  @else {
+    $new-font-size: round($font-size * modular-scale($scale));
+    font-size: $new-font-size;
+    line-height: $new-font-size * $line-height;
+    // $new-line-height: ceil($new-font-size / ($line-height * $font-size )) * $line-height * $font-size;
+    // line-height: ceil($new-line-height * $line-height-factor);
+  }
+  // @if round($line-height-factor) != $line-height-factor {
+  //   $line-height-diff: ($new-line-height*$line-height-factor) - $new-line-height;
+  //   padding-top: ceil($line-height-diff/2);
+  // }
+}
