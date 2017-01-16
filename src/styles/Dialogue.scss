@@ -1,0 +1,37 @@
+@import "defaults";
+
+.Dialogue {
+  @include font-scale(6);
+  @include lines('margin-top', 8);
+  @include lines('margin-bottom', 10);
+
+  .Dialogue-MessageList {
+    @include lines('margin-bottom', 4);
+
+    .Typist + p,
+    p + .Typist,
+    .Typist + .Typist {
+      @include lines('margin-top', 2);
+    }
+  }
+
+  .Dialogue-UserInputField {
+    border: none;
+    overflow: auto;
+    outline: none;
+    box-shadow: none;
+
+    width: 100%;
+    @include font-scale(6);
+    @extend %font-primary-regular;
+    color: $color-black;
+
+    @include lines('margin-bottom', 4);
+
+    -webkit-text-fill-color: yellow;
+  }
+
+  [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+  }
+}

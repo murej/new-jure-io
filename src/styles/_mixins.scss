@@ -83,7 +83,7 @@
     line-height: $font-size * $line-height;
   }
   @else {
-    $new-font-size: round($font-size * modular-scale($scale));
+    $new-font-size: round($font-size * ms($scale));
     font-size: $new-font-size;
     line-height: $new-font-size * $line-height;
     // $new-line-height: ceil($new-font-size / ($line-height * $font-size )) * $line-height * $font-size;

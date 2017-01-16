@@ -1,7 +1,8 @@
+@import '~modularscale-sass/stylesheets/modular-scale';
 @import "~sass-mq/mq";
 
 $color-white: white;
-$color-black: black;
+$color-black: rgba(74,74,74,1);
 $color-yellow: rgba(255,255,0,1);
 
 $base-font-size-small: 14px;
@@ -12,10 +13,10 @@ $gutter-small: 29px;
 $gutter: 33px;
 $gutter-large: 37px;
 
-$line-height: 19/strip-units($base-font-size);
+$line-height: 19/16;
 
-$modular-scale-ratio: 1.2;
-$modular-scale-base: 1; //35/strip-units($base-font-size);
+$ms-ratio: 1.2;
+$ms-base: 1; //35/strip-units($base-font-size);
 
 $em-base: $base-font-size;
 
